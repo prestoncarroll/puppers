@@ -37,7 +37,7 @@ class Discover extends Component {
     loadDog = () => {
         API.getRandom().then(res => 
             this.setState({
-                image: res.data
+                image: res.data.message
             })
         ).catch(err => console.log(err));
     };
@@ -48,7 +48,9 @@ class Discover extends Component {
             <div>
                 <h1>Doggo Pals need Pets</h1>
                 <h3>Thumbs up if you like (thumbs down if you are heartless criminal scum)</h3>
-                <img src={this.state.image} buttonClicked={this.buttonClicked} alt="Pupperino"/>
+                <img src={this.state.image} alt="Pupperino"/>
+                <button onClick={this.buttonClicked} data-value="no">No</button>
+                <button onClick={this.buttonClicked} data-value="yes">Yes</button>
                 <h3>You have freinded {this.state.count} pupperinos thusfar!</h3>
             </div>
         );
